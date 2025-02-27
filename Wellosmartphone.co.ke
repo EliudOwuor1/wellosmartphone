@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wello Smartphones - Kenya's Mobile Hub</title>
+    <meta name="description" content="Wello Smartphones - Kenya's leading mobile hub offering the best prices on smartphones, accessories, and repair services. Free delivery nationwide.">
+    <meta name="keywords" content="Wello Smartphones, Kenya, smartphones, mobile phones, accessories, repair services, Mikopo, M-Pesa">
+    <meta name="author" content="Wello Smartphones">
+    <meta property="og:title" content="Wello Smartphones - Kenya's Mobile Hub">
+    <meta property="og:description" content="Kenya's leading mobile hub offering the best prices on smartphones, accessories, and repair services.">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Wello+Smartphones+Kenya">
+    <meta property="og:url" content="https://www.wello.co.ke">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Kenyan Color Scheme */
+        :root {
+            --primary-green: #1a472a;  /* Dark green */
+            --accent-red: #e74c3c;     /* Vibrant red */
+            --secondary-yellow: #f1c40f; /* Sunny yellow */
+        }
+
+        /* Header Styles */
+        .header {
+            background: var(--primary-green);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 25px;
+            border: none;
+        }
+
+        .account-menu {
+            color: white;
+            display: flex;
+            gap: 15px;
+        }
+
+        .account-menu i {
+            cursor: pointer;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background: #2c3e50;
+            padding: 10px;
+            position: relative;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            color: white;
+            gap: 15px;
+        }
+
+        .nav-menu li {
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .nav-menu li:hover {
+            background: var(--accent-red);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 400px;
+            background: url('https://via.placeholder.com/1920x400?text=Wello+Smartphones+Kenya') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .hero-text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-image {
+            height: 200px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .price {
+            color: var(--accent-red);
+            font-size: 20px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        .btn {
+            background: var(--secondary-yellow);
+            color: black;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .footer {
+            background: #34495e;
+            color: white;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer h4 {
+            color: var(--secondary-yellow);
+            margin-bottom: 15px;
+        }
+
+        .footer ul {
+            list-style: none;
+        }
+
+        .footer li {
+            margin-bottom: 8px;
+        }
+
+        .footer form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .footer input {
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+        }
+
+        .footer button {
+            background: var(--secondary-yellow);
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Back to Top Button */
+        #back-to-top {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .logo {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">WELLO SMARTPHONES</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Tafuta simu...">
+        </div>
+        <div class="account-menu">
+            <i class="fas fa-user" aria-label="Account"></i>
+            <i class="fas fa-shopping-cart" aria-label="Cart"></i>
+        </div>
+    </header>
+
+    <nav class="nav-container">
+        <button class="menu-toggle" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu">
+            <li>Daily Deals</li>
+            <li>Smartphones</li>
+            <li>Accessories</li>
+            <li>Mikopo (Credit)</li>
+            <li>Repair Services</li>
+            <li>About Us</li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Kenya's Best Phone Prices!</h2>
+            <p>Free Delivery Nationwide</p>
+        </div>
+    </section>
+
+    <main>
+        <h2 style="padding: 20px; color: var(--primary-green);">Popular Devices</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/200?text=Tecno+Spark+10')" alt="Tecno Spark 10"></div>
+                <h3>Tecno Spark 10</h3>
+                <div class="price">KES 15,999</div>
+                <button class="btn" aria-label="Add to Cart">
+                    <span class="btn-text">Weka kwa Cart</span>
+                    <span class="spinner" style="display: none;">Loading...</span>
+                </button>
+            </div>
+            <div class="product-card">
+                <div class="product-image" style="background-image: url('https://via.placeholder.com/200?text=Samsung+A24')" alt="Samsung Galaxy A24"></div>
+                <h3>Samsung Galaxy A24</h3>
+                <div class="price">KES 29,499</div>
+                <button class="btn" aria-label="Add to Cart">
+                    <span class="btn-text">Weka kwa Cart</span>
+                    <span class="spinner" style="display: none;">Loading...</span>
+                </button>
+            </div>
+            <!-- Add more Kenyan market devices -->
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div>
+            <h4>Customer Care</h4>
+            <ul>
+                <li>Contact: 0700 WELLO</li>
+                <li>Email: hello@wello.co.ke</li>
+                <li>Nairobi HQ: Moi Avenue</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Services</h4>
+            <ul>
+                <li>Device Financing</li>
+                <li>Warranty Support</li>
+                <li>Trade-In Program</li>
+                <li>M-Pesa Integration</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Follow Us</h4>
+            <div style="font-size: 24px;">
+                <i class="fab fa-facebook" aria-label="Facebook"></i>
+                <i class="fab fa-twitter" aria-label="Twitter"></i>
+                <i class="fab fa-instagram" aria-label="Instagram"></i>
+                <i class="fab fa-tiktok" aria-label="TikTok"></i>
+            </div>
+            <p style="margin-top: 15px;">Proudly Kenyan</p>
+        </div>
+        <div>
+            <h4>Subscribe to Our Newsletter</h4>
+            <form>
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </footer>
+
+    <button id="back-to-top" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Product card hover effect
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseover', () => {
+                card.style.transform = 'translateY(-5px)';
+            });
+            card.addEventListener('mouseout', () => {
+                card.style.transform = 'none';
+            });
+        });
+
+        // Add to cart button with loading spinner
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const spinner = button.querySelector('.spinner');
+                const btnText = button.querySelector('.btn-text');
+                btnText.style.display = 'none';
+                spinner.style.display = 'inline-block';
+                setTimeout(() => {
+                    alert('Bidhaa imeongezwa kwenye cart!');
+                    btnText.style.display = 'inline-block';
+                    spinner.style.display = 'none';
+                }, 1000); // Simulate a delay
+            });
+        });
+
+        // Back to top button
+        window.addEventListener('scroll', () => {
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        document.getElementById('back-to-top').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
+
